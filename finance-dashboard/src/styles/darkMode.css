@@ -1,0 +1,381 @@
+/* Dark Mode Theme */
+
+[data-theme="dark"] {
+  --primary: #818cf8;
+  --primary-light: #a5b4fc;
+  --primary-dark: #6366f1;
+  --secondary: #a78bfa;
+  --accent: #f472b6;
+  --success: #34d399;
+  --income: #34d399;
+  --expense: #f87171;
+  --danger: #f87171;
+  --warning: #fbbf24;
+
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-tertiary: #0f3460;
+  
+  --border: #2d3e5f;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --text-muted: #7a7a7a;
+
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+
+  color-scheme: dark;
+}
+
+/* Smooth dark mode transition */
+[data-theme="dark"] * {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+  background-color: var(--bg-tertiary);
+}
+
+/* Dark mode specific component styling */
+[data-theme="dark"] .card,
+[data-theme="dark"] .container,
+[data-theme="dark"] .modal,
+[data-theme="dark"] .dropdown-menu {
+  background-color: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] button {
+  transition: all 0.2s ease;
+}
+
+/* Dark mode button variants */
+[data-theme="dark"] .btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(129, 140, 248, 0.3);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  background: var(--primary-dark);
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.4);
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: var(--bg-tertiary);
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+
+[data-theme="dark"] .btn-ghost {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .btn-ghost:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] table {
+  background-color: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] table thead {
+  background-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] table tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+[data-theme="dark"] table tbody tr {
+  border-color: var(--border);
+}
+
+[data-theme="dark"] code {
+  background-color: var(--bg-tertiary);
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] pre {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Dark mode scrollbar */
+[data-theme="dark"] ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Dark mode form elements */
+[data-theme="dark"] .form-group label {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-check-input {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .form-check-input:checked {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Dark mode badges and labels */
+[data-theme="dark"] .badge {
+  background-color: var(--primary);
+  color: var(--bg-primary);
+}
+
+[data-theme="dark"] .badge.secondary {
+  background-color: var(--secondary);
+  color: var(--bg-primary);
+}
+
+[data-theme="dark"] .label {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--primary);
+}
+
+/* Dark mode alerts */
+[data-theme="dark"] .alert {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .alert.success {
+  background-color: rgba(52, 211, 153, 0.15);
+  border-color: var(--success);
+  color: #34d399;
+}
+
+[data-theme="dark"] .alert.error {
+  background-color: rgba(248, 113, 113, 0.15);
+  border-color: var(--danger);
+  color: #f87171;
+}
+
+[data-theme="dark"] .alert.warning {
+  background-color: rgba(251, 191, 36, 0.15);
+  border-color: var(--warning);
+  color: #fbbf24;
+}
+
+/* Dark mode charts */
+[data-theme="dark"] .chart-container {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .chart-tooltip {
+  background-color: rgba(13, 17, 46, 0.9);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .chart-tooltip-title {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+[data-theme="dark"] .chart-tooltip-row {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .chart-tooltip-label {
+  font-weight: 500;
+}
+
+/* Dark mode dropdown */
+[data-theme="dark"] .dropdown-menu {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+[data-theme="dark"] .dropdown-item {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* Dark mode navbar */
+[data-theme="dark"] nav,
+[data-theme="dark"] .navbar {
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="dark"] .navbar-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .navbar-subtitle {
+  color: var(--text-muted);
+}
+
+/* Dark mode sidebar */
+[data-theme="dark"] .sidebar {
+  background-color: var(--bg-secondary);
+  border-right: 1px solid var(--border);
+}
+
+[data-theme="dark"] .sidebar-item {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .sidebar-item.active {
+  background-color: var(--bg-tertiary);
+  color: var(--primary);
+}
+
+[data-theme="dark"] .logo-text {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-item {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .nav-item:hover {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .nav-item.active {
+  color: var(--primary);
+}
+
+/* Dark mode modal */
+[data-theme="dark"] .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="dark"] .modal-content {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .modal,
+[data-theme="dark"] .modal-box {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom-color: var(--border);
+}
+
+/* Insight cards dark mode */
+[data-theme="dark"] .insight-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .insight-title {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .insight-sub {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .insight-value {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .stat-row {
+  border-bottom-color: var(--border);
+}
+
+[data-theme="dark"] .stat-label {
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .stat-value {
+  color: var(--text-primary);
+}
+
+/* Summary cards dark mode */
+[data-theme="dark"] .summary-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .summary-card:hover {
+  border-color: var(--border-strong);
+}
+
+[data-theme="dark"] .summary-title,
+[data-theme="dark"] .summary-card-title,
+[data-theme="dark"] .summary-label {
+  color: var(--text-muted);
+}
+
+[data-theme="dark"] .summary-value,
+[data-theme="dark"] .summary-card-amount {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .summary-change,
+[data-theme="dark"] .summary-card-change {
+  color: var(--text-secondary);
+}
+
+/* Reduce transparency in dark mode for better contrast */
+[data-theme="dark"] .text-muted {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="dark"] .text-secondary {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .text-primary {
+  color: var(--text-primary) !important;
+}

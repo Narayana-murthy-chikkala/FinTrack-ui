@@ -1,0 +1,906 @@
+/* Mobile Menu Toggle Button */
+.mobile-menu-toggle {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 44px;
+  height: 44px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  z-index: 500;
+  transition: all var(--fast) ease;
+  box-shadow: var(--shadow-md);
+}
+
+.mobile-menu-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.mobile-menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Sidebar Wrapper for mobile */
+.sidebar-wrapper {
+  position: relative;
+  transition: all var(--mid) ease;
+}
+
+/* Sidebar Overlay for mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  animation: fadeIn 0.2s ease;
+  transition: background 0.2s ease, backdrop-filter 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   RESPONSIVE DESIGN - Comprehensive Device Support
+   ═════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   Extra Large Screens (1920px+)
+   Desktop - Ultra Wide Monitors
+   ───────────────────────────────────────────── */
+@media (min-width: 1920px) {
+  .sidebar {
+    width: 280px;
+  }
+
+  .layout-content {
+    padding: 40px;
+  }
+
+  .navbar {
+    padding: 0 40px;
+  }
+
+  .page-title {
+    font-size: 32px;
+  }
+
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .charts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card {
+    padding: 28px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Large Desktop (1440px - 1919px)
+   Standard Large Desktop Screens
+   ───────────────────────────────────────────── */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .layout-content {
+    padding: 32px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Desktop (1200px - 1439px)
+   Standard Desktop & Larger Tablets
+   ───────────────────────────────────────────── */
+@media (min-width: 1200px) {
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .charts-grid {
+    grid-template-columns: 1.6fr 1fr;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Large Tablet / Small Desktop (1024px - 1199px)
+   iPad Pro, Large Tablets, Small Laptops
+   ───────────────────────────────────────────── */
+@media (max-width: 1199px) {
+  .navbar {
+    padding: 0 28px;
+  }
+
+  .sidebar {
+    width: 240px;
+  }
+
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .layout-content {
+    padding: 24px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Tablet Landscape (900px - 1023px)
+   iPad, Tablets in Landscape, Large Phones
+   ───────────────────────────────────────────── */
+@media (max-width: 1023px) and (min-width: 900px) {
+  .sidebar-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 300;
+    width: 220px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform var(--mid) var(--ease);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-wrapper.open .sidebar {
+    transform: translateX(0);
+  }
+
+  .layout .sidebar-overlay {
+    display: none;
+  }
+
+  .layout .sidebar-wrapper.open ~ .sidebar-overlay {
+    display: block;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 0 60px 0 20px;
+  }
+
+  .navbar-title {
+    font-size: 18px;
+  }
+
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .layout-content {
+    padding: 20px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Tablet Portrait (768px - 899px)
+   iPad Portrait, Regular Tablets
+   ───────────────────────────────────────────── */
+@media (max-width: 899px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .sidebar-wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 300;
+    width: 220px;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform var(--mid) var(--ease);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-wrapper.open .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-wrapper.open ~ .sidebar-overlay {
+    display: block;
+  }
+
+  .layout .sidebar-overlay {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 60px 0 16px;
+  }
+
+  .navbar-title {
+    font-size: 17px;
+  }
+
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .layout-content {
+    padding: 18px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Large Phone / Small Tablet (600px - 767px)
+   iPhone 12+, Galaxy A12+, Landscape phones
+   ───────────────────────────────────────────── */
+@media (max-width: 767px) {
+  .mobile-menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    top: 14px;
+    left: 14px;
+  }
+
+  .layout-content {
+    padding: 16px;
+    padding-top: 80px;
+  }
+
+  .navbar {
+    padding: 0 58px 0 64px;
+    height: 56px;
+  }
+
+  .navbar-content {
+    gap: 10px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+  }
+
+  .navbar-subtitle {
+    font-size: 11px;
+    display: none;
+  }
+
+  .page-title {
+    font-size: 22px;
+  }
+
+  .page-subtitle {
+    font-size: 12px;
+  }
+
+  .summary-cards-grid,
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summary-card {
+    padding: 18px 20px;
+  }
+
+  .summary-value,
+  .summary-card-amount {
+    font-size: 24px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar,
+  .filter-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .filter-input-group,
+  .filter-select {
+    min-width: unset;
+    flex: 1;
+    width: 100%;
+  }
+
+  .transaction-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .transaction-item-right {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+  }
+
+  .transaction-amount {
+    min-width: auto;
+  }
+
+  .modal-box,
+  .modal {
+    border-radius: var(--r-lg);
+    max-width: 95vw;
+    width: 100%;
+  }
+
+  .navbar-actions {
+    gap: 6px;
+  }
+
+  .role-label {
+    display: none;
+  }
+
+  .role-select {
+    font-size: 11px;
+    padding: 5px 25px 5px 8px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .btn-sm {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Medium Phone (480px - 599px)
+   iPhone SE, Galaxy S21, Standard Phones
+   ───────────────────────────────────────────── */
+@media (max-width: 599px) {
+  .mobile-menu-toggle {
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .layout-content {
+    padding: 14px;
+    padding-top: 70px;
+  }
+
+  .navbar {
+    padding: 0 54px 0 60px;
+    height: 54px;
+  }
+
+  .navbar-title {
+    font-size: 15px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .page-subtitle {
+    font-size: 12px;
+  }
+
+  .summary-card {
+    padding: 16px;
+  }
+
+  .summary-value,
+  .summary-card-amount {
+    font-size: 22px;
+  }
+
+  .summary-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
+  }
+
+  .summary-label,
+  .summary-card-title {
+    font-size: 10px;
+  }
+
+  .summary-change,
+  .summary-card-change {
+    font-size: 10px;
+    margin-top: 6px;
+  }
+
+  .transaction-category {
+    font-size: 12px;
+  }
+
+  .transaction-description {
+    font-size: 11px;
+  }
+
+  .card {
+    padding: 14px;
+  }
+
+  .card-title {
+    font-size: 10px;
+  }
+
+  .btn {
+    padding: 7px 12px;
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .modal {
+    max-width: 90vw;
+  }
+
+  .modal-header {
+    padding: 18px 20px 16px;
+  }
+
+  .modal-body {
+    padding: 18px;
+  }
+
+  .modal-footer {
+    padding: 14px 16px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Small Phone (360px - 479px)
+   iPhone 12 Mini, Galaxy A12, Compact Phones
+   ───────────────────────────────────────────── */
+@media (max-width: 479px) {
+  .mobile-menu-toggle {
+    width: 38px;
+    height: 38px;
+    top: 10px;
+    left: 10px;
+  }
+
+  .layout-content {
+    padding: 12px;
+    padding-top: 66px;
+  }
+
+  .navbar {
+    padding: 0 50px 0 56px;
+    height: 52px;
+  }
+
+  .navbar-title {
+    font-size: 14px;
+  }
+
+  .navbar-content {
+    gap: 6px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .page-subtitle {
+    display: none;
+  }
+
+  .page-header {
+    margin-bottom: 2px;
+  }
+
+  .page-wrapper {
+    gap: 16px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+
+  .summary-value,
+  .summary-card-amount {
+    font-size: 20px;
+  }
+
+  .summary-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .summary-card-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .summary-label,
+  .summary-card-title {
+    font-size: 9px;
+  }
+
+  .summary-change,
+  .summary-card-change {
+    font-size: 9px;
+    margin-top: 4px;
+  }
+
+  .transaction-item {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .transaction-category {
+    font-size: 11px;
+  }
+
+  .transaction-description {
+    font-size: 10px;
+  }
+
+  .transaction-date {
+    font-size: 10px;
+  }
+
+  .transaction-amount {
+    font-size: 12px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  .card-title {
+    font-size: 9px;
+    margin-bottom: 2px;
+  }
+
+  .btn {
+    padding: 6px 10px;
+    font-size: 10px;
+  }
+
+  .btn-icon,
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .btn-icon-sm {
+    width: 24px;
+    height: 24px;
+  }
+
+  .modal {
+    max-width: 88vw;
+  }
+
+  .modal-header {
+    padding: 16px 18px 14px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-footer {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .modal-title {
+    font-size: 14px;
+  }
+
+  .form-input,
+  .form-select {
+    font-size: 12px;
+    padding: 7px 10px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .role-select {
+    font-size: 10px;
+    padding: 4px 20px 4px 6px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   Extra Small Phone (< 360px)
+   Very Small Devices, Old Phones
+   ───────────────────────────────────────────── */
+@media (max-width: 359px) {
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+    top: 8px;
+    left: 8px;
+  }
+
+  .layout {
+    font-size: 12px;
+  }
+
+  .layout-content {
+    padding: 10px;
+    padding-top: 62px;
+  }
+
+  .navbar {
+    padding: 0 46px 0 52px;
+    height: 50px;
+  }
+
+  .navbar-title {
+    font-size: 13px;
+  }
+
+  .page-title {
+    font-size: 16px;
+  }
+
+  .page-subtitle {
+    display: none;
+  }
+
+  .summary-card {
+    padding: 12px;
+  }
+
+  .summary-value,
+  .summary-card-amount {
+    font-size: 18px;
+  }
+
+  .summary-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 6px;
+  }
+
+  .summary-label,
+  .summary-card-title {
+    font-size: 8px;
+  }
+
+  .transaction-item {
+    padding: 10px;
+    gap: 6px;
+  }
+
+  .transaction-category {
+    font-size: 10px;
+  }
+
+  .transaction-description {
+    font-size: 9px;
+  }
+
+  .transaction-amount {
+    font-size: 11px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .btn {
+    padding: 5px 8px;
+    font-size: 9px;
+  }
+
+  .card-title {
+    font-size: 8px;
+  }
+
+  .modal {
+    max-width: 85vw;
+  }
+
+  .modal-header {
+    padding: 14px 16px 12px;
+  }
+
+  .modal-body {
+    padding: 14px;
+  }
+
+  .modal-footer {
+    padding: 10px 12px;
+  }
+
+  .modal-title {
+    font-size: 13px;
+  }
+
+  .form-input,
+  .form-select {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  .role-select {
+    font-size: 9px;
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   Device-Specific Optimizations
+   ═════════════════════════════════════════════ */
+
+/* iPhone/iOS Safe Area */
+@supports (padding: max(0px)) {
+  .navbar {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+
+  .layout-content {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Notch/Cutout Support */
+@media (max-height: 600px) and (orientation: landscape) {
+  .navbar {
+    height: 48px;
+  }
+
+  .layout-content {
+    padding: 12px;
+  }
+
+  .page-title {
+    font-size: 18px;
+    margin-bottom: 2px;
+  }
+
+  .summary-card {
+    padding: 12px;
+  }
+}
+
+/* High DPI Screens */
+@media (min-device-pixel-ratio: 2) and (max-width: 600px) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .mobile-menu-toggle {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Portrait Mode Optimization */
+@media (orientation: portrait) and (max-width: 600px) {
+  .layout-content {
+    padding-top: 80px;
+  }
+}
+
+/* Landscape Mode Optimization */
+@media (orientation: landscape) and (max-height: 600px) {
+  .navbar {
+    height: 46px;
+    padding: 0 50px 0 12px;
+  }
+
+  .layout-content {
+    padding: 10px 12px;
+  }
+
+  .page-title {
+    font-size: 16px;
+  }
+
+  .summary-cards-grid {
+    gap: 8px;
+  }
+
+  .summary-card {
+    padding: 12px 14px;
+  }
+
+  .summary-value {
+    font-size: 18px;
+  }
+}
+
+/* Touch Device Optimization */
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .nav-item,
+  .card {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .btn-icon,
+  .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+

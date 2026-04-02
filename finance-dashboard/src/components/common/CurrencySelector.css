@@ -1,0 +1,300 @@
+.currency-selector {
+  position: relative;
+  display: inline-block;
+}
+
+.currency-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--mid) ease;
+  white-space: nowrap;
+}
+
+.currency-button:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+}
+
+.currency-button:active {
+  transform: scale(0.98);
+}
+
+.currency-symbol {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 16px;
+}
+
+.currency-code {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.chevron {
+  transition: transform var(--fast) ease;
+  color: var(--text-secondary);
+}
+
+.chevron.open {
+  transform: rotate(180deg);
+}
+
+.currency-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  min-width: 280px;
+  animation: modalIn var(--mid) var(--ease) both;
+}
+
+.currency-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-strong);
+  background: var(--bg-card);
+}
+
+.currency-header h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.currency-list {
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--bg-card);
+}
+
+.currency-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  background: transparent;
+  border: none;
+  border-radius: var(--r-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--fast) ease;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: inherit;
+  width: 100%;
+}
+
+.currency-option:hover {
+  background: var(--accent-dim);
+  color: var(--text-primary);
+}
+
+.currency-option.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.currency-flag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.currency-option.active .currency-flag {
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.currency-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.currency-code-option {
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-primary);
+}
+
+.currency-name {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.checkmark {
+  color: #10b981;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+/* ─── Dark Mode (FIXED) ───────────────────────────────────────────────────── */
+/* Root cause: --bg-card, --border-strong, --accent-dim are undefined in dark  */
+/* theme. Replaced with --bg-secondary, --border, and rgba() equivalents.      */
+
+:root[data-theme="dark"] .currency-button {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .currency-button:hover {
+  border-color: var(--primary);
+  background: var(--bg-secondary);
+  box-shadow: 0 2px 8px rgba(129, 140, 248, 0.2);
+}
+
+:root[data-theme="dark"] .currency-symbol {
+  color: var(--primary);
+}
+
+:root[data-theme="dark"] .currency-code {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .chevron {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .currency-dropdown {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+:root[data-theme="dark"] .currency-header {
+  background: var(--bg-tertiary);
+  border-bottom-color: var(--border);
+}
+
+:root[data-theme="dark"] .currency-header h4 {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .currency-list {
+  background: var(--bg-secondary);
+}
+
+:root[data-theme="dark"] .currency-option {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .currency-option:hover {
+  background: rgba(129, 140, 248, 0.1);
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .currency-option.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+:root[data-theme="dark"] .currency-flag {
+  background: var(--bg-tertiary);
+  color: var(--primary);
+}
+
+:root[data-theme="dark"] .currency-option.active .currency-flag {
+  background: rgba(129, 140, 248, 0.15);
+}
+
+:root[data-theme="dark"] .currency-info {
+  flex: 1;
+}
+
+:root[data-theme="dark"] .currency-code-option {
+  color: var(--text-primary);
+}
+
+:root[data-theme="dark"] .currency-name {
+  color: var(--text-secondary);
+}
+
+:root[data-theme="dark"] .checkmark {
+  color: #34d399;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .currency-button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .currency-symbol {
+    font-size: 14px;
+  }
+
+  .currency-code {
+    display: none;
+  }
+
+  .currency-dropdown {
+    min-width: 240px;
+    right: -50px;
+  }
+
+  .currency-option {
+    padding: 10px 12px;
+  }
+
+  .currency-flag {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+  .currency-code-option {
+    font-size: 12px;
+  }
+
+  .currency-name {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .currency-button {
+    padding: 5px 8px;
+  }
+
+  .currency-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%);
+    min-width: 90vw;
+    max-height: 70vh;
+  }
+
+  .currency-list {
+    max-height: 60vh;
+  }
+}
