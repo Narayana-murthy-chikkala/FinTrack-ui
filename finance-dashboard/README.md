@@ -239,17 +239,6 @@ const currencies = ['INR', 'USD', 'EUR', 'GBP', 'JPY', 'AUD', 'CAD', 'SGD', 'YOU
 ### Customizing Categories
 Add categories in the transaction form or modify `mockData.js` to include preset categories.
 
-### Changing Colors/Theme
-Modify CSS variables in `src/styles/global.css`:
-```css
-:root {
-  --primary: #6366f1;
-  --accent: #06b6d4;
-  --expense: #ef4444;
-  /* ... more variables */
-}
-```
-
 ## Available Scripts
 
 | Command | Description |
