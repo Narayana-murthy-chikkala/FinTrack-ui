@@ -1,19 +1,32 @@
+import { useLocation } from "react-router-dom";
 import { useRole } from "../../context/RoleContext";
 import { Plus } from "lucide-react";
 import AddTransaction from "../transactions/AddTransaction";
 import ThemeToggle from "../common/ThemeToggle";
 import CurrencySelector from "../common/CurrencySelector";
 
-export default function Navbar({ activePage }) {
+export default function Navbar() {
   const { role, switchRole, ROLES } = useRole();
+  const location = useLocation();
 
   const getPageTitle = () => {
     const titles = {
-      dashboard: "Dashboard",
-      transactions: "Transactions",
-      insights: "Insights",
+      "/": "Dashboard",
+      "/dashboard": "Dashboard",
+      "/transactions": "Transactions",
+      "/insights": "Insights",
     };
-    return titles[activePage] || "Dashboard";
+    return titles[location.pathname] || "Dashboard";
+  };
+
+  const getPageSubtitle = () => {
+    const subtitles = {
+      "/": "Overview of your financial health",
+      "/dashboard": "Overview of your financial health",
+      "/transactions": "Manage and track your transactions",
+      "/insights": "Detailed financial insights and analysis",
+    };
+    return subtitles[location.pathname] || "";
   };
 
   return (
@@ -21,14 +34,7 @@ export default function Navbar({ activePage }) {
       <div className="navbar-content">
         <div className="navbar-title-section">
           <h1 className="navbar-title">{getPageTitle()}</h1>
-          <p className="navbar-subtitle">
-            {activePage === "dashboard" &&
-              "Overview of your financial health"}
-            {activePage === "transactions" &&
-              "Manage and track your transactions"}
-            {activePage === "insights" &&
-              "Detailed financial insights and analysis"}
-          </p>
+          <p className="navbar-subtitle">{getPageSubtitle()}</p>
         </div>
 
         <div className="navbar-actions">
@@ -46,7 +52,7 @@ export default function Navbar({ activePage }) {
             </select>
           </div>
 
-          {activePage === "transactions" && <AddTransaction />}
+          {location.pathname === "/transactions" && <AddTransaction />}
         </div>
       </div>
     </header>

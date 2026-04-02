@@ -51,6 +51,24 @@
   to { opacity: 1; }
 }
 
+/* Sidebar Navigation Items */
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item:hover {
+  text-decoration: none;
+}
+
+.nav-item:active {
+  text-decoration: none;
+}
+
+.nav-item:visited {
+  text-decoration: none;
+}
+
 /* ═════════════════════════════════════════════════════════════════════
    RESPONSIVE DESIGN - Comprehensive Device Support
    ═════════════════════════════════════════════════════════════════════ */

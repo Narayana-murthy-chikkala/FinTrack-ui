@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import "./layout.css";
 
-export default function Layout({ children, activePage, setActivePage }) {
+export default function Layout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const closeSidebar = () => setSidebarOpen(false);
@@ -27,12 +27,12 @@ export default function Layout({ children, activePage, setActivePage }) {
 
       {/* Sidebar */}
       <div className={`sidebar-wrapper ${sidebarOpen ? "open" : ""}`}>
-        <Sidebar activePage={activePage} setActivePage={setActivePage} onNavigate={closeSidebar} />
+        <Sidebar onNavigate={closeSidebar} />
       </div>
 
       {/* Main Content */}
       <div className="layout-main">
-        <Navbar activePage={activePage} />
+        <Navbar />
         <main className="layout-content">{children}</main>
       </div>
     </div>

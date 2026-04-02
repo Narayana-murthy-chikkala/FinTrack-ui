@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { TransactionProvider } from "./context/TransactionContext";
 import { RoleProvider } from "./context/RoleContext";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -15,38 +15,31 @@ import "./styles/premiumComponents.css";
 import "./App.css";
 
 function AppContent() {
-  const [activePage, setActivePage] = useState("dashboard");
-
-  const renderPage = () => {
-    switch (activePage) {
-      case "dashboard":
-        return <Dashboard />;
-      case "transactions":
-        return <Transactions />;
-      case "insights":
-        return <Insights />;
-      default:
-        return <Dashboard />;
-    }
-  };
-
   return (
-    <Layout activePage={activePage} setActivePage={setActivePage}>
-      {renderPage()}
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/insights" element={<Insights />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </Layout>
   );
 }
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <CurrencyProvider>
-        <TransactionProvider>
-          <RoleProvider>
-            <AppContent />
-          </RoleProvider>
-        </TransactionProvider>
-      </CurrencyProvider>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider>
+        <CurrencyProvider>
+          <TransactionProvider>
+            <RoleProvider>
+              <AppContent />
+            </RoleProvider>
+          </TransactionProvider>
+        </CurrencyProvider>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }

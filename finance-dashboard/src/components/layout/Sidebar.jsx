@@ -1,15 +1,20 @@
+import { Link, useLocation } from "react-router-dom";
 import { LayoutDashboard, ArrowLeftRight, Lightbulb, TrendingUp } from "lucide-react";
 
 const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { key: "transactions", label: "Transactions", icon: ArrowLeftRight },
-  { key: "insights", label: "Insights", icon: Lightbulb },
+  { path: "/", label: "Dashboard", icon: LayoutDashboard },
+  { path: "/transactions", label: "Transactions", icon: ArrowLeftRight },
+  { path: "/insights", label: "Insights", icon: Lightbulb },
 ];
 
-export default function Sidebar({ activePage, setActivePage, onNavigate = () => {} }) {
-  const handleNavClick = (key) => {
-    setActivePage(key);
-    onNavigate(); // Close sidebar on mobile after navigation
+export default function Sidebar({ onNavigate = () => {} }) {
+  const location = useLocation();
+
+  const isActive = (path) => {
+    if (path === "/" && location.pathname === "/") return true;
+    if (path !== "/" && location.pathname.startsWith(path)) return true;
+    if (path === "/" && location.pathname === "/dashboard") return true;
+    return false;
   };
 
   return (
@@ -24,15 +29,16 @@ export default function Sidebar({ activePage, setActivePage, onNavigate = () => 
       </div>
 
       <div className="nav-section-label">Menu</div>
-      {navItems.map(({ key, label, icon: Icon }) => (
-        <button
-          key={key}
-          className={`nav-item ${activePage === key ? "active" : ""}`}
-          onClick={() => handleNavClick(key)}
+      {navItems.map(({ path, label, icon: Icon }) => (
+        <Link
+          key={path}
+          to={path}
+          className={`nav-item ${isActive(path) ? "active" : ""}`}
+          onClick={onNavigate}
         >
           <Icon size={16} className="nav-icon" />
           {label}
-        </button>
+        </Link>
       ))}
 
       <div className="sidebar-footer">
